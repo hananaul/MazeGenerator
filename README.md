@@ -1,85 +1,87 @@
 # MazeGenerator
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MazeGenerator
-{
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    namespace MazeGenerator
     {
-        static void Main(string[] args)
+        class Program
         {
-            Console.Write("Input the number : ");
-            int n = Convert.ToInt32(Console.ReadLine());
-
-            //int s = 4*n-1;
-            int door = 0;
-
-            for (int r = 0; r < n; r++)
+            static void Main(string[] args)
             {
-                if (isOdd(r))
+                Console.Write("Input the number : ");
+                
+                int n = Convert.ToInt32(Console.ReadLine());
+                
+                int door = 0;
+    
+                for (int r = 0; r < n; r++)
                 {
-                    //ganjil
-                    for (int c = 0; c < n; c++)
+                    if (isOdd(r))
                     {
-                        //mencetak @ di awal dan akhir saja
-                        if (c == 0 || c == n - 1)
+                        //ganjil
+                        for (int c = 0; c < n; c++)
                         {
-                            Console.Write("@");
+                            //mencetak @ di awal dan akhir saja
+                            if (c == 0 || c == n - 1)
+                            {
+                                Console.Write("@");
+                            }
+                            else
+                            {
+                                Console.Write(" ");
+                            }
                         }
-                        else
-                        {
-                            Console.Write(" ");
-                        }
-                    }
-                }
-                else
-                {
-                    //genap
-                    for (int c = 0; c < n; c++)
-                    {
-
-                        if (c == 1 && door == 0)
-                        {
-                            //buat jalan di kiri
-                            Console.Write(" ");
-                        }
-                        else if (c == n - 2 && door == 1)
-                        {
-                            //buat jalan di kanan
-                            Console.Write(" ");
-                        }
-                        else
-                        {
-                            Console.Write("@");
-                        }
-                    }
-
-                    if (door == 0)
-                    {
-                        door = 1;
                     }
                     else
                     {
-                        door = 0;
+                        //genap
+                        for (int c = 0; c < n; c++)
+                        {
+    
+                            if (c == 1 && door == 0)
+                            {
+                                //buat jalan di kiri
+                                Console.Write(" ");
+                            }
+                            else if (c == n - 2 && door == 1)
+                            {
+                                //buat jalan di kanan
+                                Console.Write(" ");
+                            }
+                            else
+                            {
+                                Console.Write("@");
+                            }
+                        }
+    
+                        if (door == 0)
+                        {
+                            door = 1;
+                        }
+                        else
+                        {
+                            door = 0;
+                        }
                     }
+    
+                    Console.WriteLine();
                 }
-
-                Console.WriteLine();
+    
+                Console.ReadKey();
             }
-
-            Console.ReadKey();
-        }
-
-        public static bool isOdd(int input)
-        {
-            if (input % 2 == 1)
+    
+            public static bool isOdd(int input)
             {
-                return true;
+                if (input % 2 == 1)
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
         }
     }
-}
+    
